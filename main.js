@@ -19,6 +19,7 @@ const port=1236;
 app.use(bodyParser.urlencoded({extended: false}));
 
 app.use('/lib', express.static(path.join(__dirname, 'lib')));
+app.use('/data', express.static(path.join(__dirname, 'data')));
 app.use('/',indexRouter);
 app.use('/notice',noticeRouter);
 app.use('/tools',toolsRouter);

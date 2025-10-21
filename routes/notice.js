@@ -13,7 +13,7 @@ router.get('*splat', (req,res,next) => {
 	});
 });
 router.get('/', (req,res) => {
-	var list=template.list(req.list);
+	var list=template.noticeList(req.list);
 	var title='공지사항';
 	var html=template.html(title,`
 	<a href='/notice/create'>글쓰기</a>
@@ -89,7 +89,7 @@ router.get('/:pageId', (req,res,next) => {
 		if (err) next(err); else {
 			var sanitizedTitle=sanitizeHtml(req.params.pageId);
 			var sanitizedDescription=sanitizeHtml(description);
-			var list=template.list(req.list);
+			var list=template.noticeList(req.list);
 			var html=template.html(sanitizedTitle, `<a href='/notice'>되돌아가기</a>
 				<a href='/notice/update/${sanitizedTitle}'>수정하기</a>
 				<form action='/notice/delete' method='POST'>
