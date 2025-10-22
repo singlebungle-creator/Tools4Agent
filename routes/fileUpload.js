@@ -51,6 +51,11 @@ router.post('/upload', upload.array('files'), (req,res,next) => {
 	res.redirect('/tools/fileUpload');
 });
 
+router.get('/download/:fileName', (req,res,next) => {
+	var fileName=path.parse(req.params.fileName).base;
+	res.download(`./data/fileUpload/${fileName}`,`${fileName}`);
+});
+
 router.get('/delete/:fileName', (req,res,next) => {
 	var fileName=path.parse(req.params.fileName).base;
 	fs.unlink(`data/fileUpload/${fileName}`, (err) => {
