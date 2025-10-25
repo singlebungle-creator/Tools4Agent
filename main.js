@@ -8,6 +8,7 @@ const path=require('path');
 //routes&module
 const indexRouter=require('./routes/index');
 const noticeRouter=require('./routes/notice');
+const calendarRouter=require('./routes/calendar');
 const toolsRouter=require('./routes/tools');
 
 //third-party middlewares
@@ -20,7 +21,9 @@ app.use(bodyParser.urlencoded({extended: false}));
 
 app.use('/lib', express.static(path.join(__dirname, 'lib')));
 app.use('/data', express.static(path.join(__dirname, 'data')));
+
 app.use('/',indexRouter);
+app.use('/calendar', calendarRouter);
 app.use('/notice',noticeRouter);
 app.use('/tools',toolsRouter);
 
